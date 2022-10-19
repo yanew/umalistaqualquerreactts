@@ -5,9 +5,9 @@ import '../styles/cadastro.css';
 
 export function Cadastro() {
 
-    const[contLogin, setContLogin] = useState("");
-    const[contSenha, setContSenha] = useState("");
-    const[contNome, setContNome] = useState("");
+    const[contLogin, setContLogin] = useState<string>("");
+    const[contSenha, setContSenha] = useState<string>("");
+    const[contNome, setContNome] = useState<string>("");
 
     const criarUsuario = async () => {
         const doc = {

@@ -2,8 +2,10 @@ import edit from '../images/edit.png';
 import lixeira from '../images/lixeira.png';
 
 import '../styles/item.css';
+import {Item} from '../interfaces/Item';
 
-export function Item(item) {
+
+export function Item(item:Item) {
 
     const deleteItem = async () => {
         await fetch('http://localhost:8080/item/' + item.id,{

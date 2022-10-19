@@ -4,10 +4,10 @@ import '../styles/login.css';
 
 export function Login() {
 
-    const[contLogin, setContLogin] = useState("");
-    const[contSenha, setContSenha] = useState("");
+    const[contLogin, setContLogin] = useState<string>("");
+    const[contSenha, setContSenha] = useState<string>("");
 
-    const uri = "http://localhost:8080/usuario/";
+    const uri: string = "http://localhost:8080/usuario/";
 
     const conferirUsuario = async () => {
         const res = await fetch(uri+contLogin+"/"+contSenha);

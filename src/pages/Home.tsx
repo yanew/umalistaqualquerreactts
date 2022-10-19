@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { Item } from '../components/Item';
 import '../styles/home.css';
 import logout from '../images/logout.png';
+import {Item} from '../interfaces/Item';
 
 export function Home() {
   
-  const[conteudoItem, setConteudoItem] = useState("");
-  const[itens, setItens]= useState([]);
+  const[conteudoItem, setConteudoItem] = useState<string>("");
+  const[itens, setItens]= useState<Item[]>([]);
   const[idItem, setIdItem] = useState(null);
-  const[adicionar, setAdicionar] = useState(true);
+  const[adicionar, setAdicionar] = useState<boolean>(true);
   const[idUsuario, setIdUsuario] = useState(null);
 
   const atualizarUsuario = async () =>{
@@ -102,7 +103,7 @@ export function Home() {
           }
 
         <div id="cartaoItem" className="cartaoItem">
-          {itens.map((item)=>(
+          {itens!=null && itens.map((item)=>(
             <Item key= {item.id} id = {item.id} conteudo= {item.conteudo} selecionarItem={(it) => selecionarItem(it)}/>
           ))
           }
