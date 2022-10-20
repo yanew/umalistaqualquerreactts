@@ -4,7 +4,6 @@ import { Login } from './Login';
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 
 export function AppRouter() {
-
     return(
         <Router>
             <Routes>
@@ -14,6 +13,4 @@ export function AppRouter() {
             </Routes>
         </Router>
     );
-
-
 }

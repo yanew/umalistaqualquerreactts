@@ -20,7 +20,7 @@ export function Home() {
     const usuario = await res.json();
 
     const novoItem = {conteudo: conteudoItem}
-    const listaAtualizada = {listaItens:[...usuario.listaItens, novoItem]}
+    const listaAtualizada = {listaItensDto:[...usuario.listaItensDto, novoItem]}
 
     const usuarioTemp = {...usuario, ...listaAtualizada}
     console.log(usuarioTemp);
@@ -69,7 +69,7 @@ export function Home() {
       const res = await fetch(uri);
       const usuario = await res.json();
   
-      setItens(usuario.listaItens);
+      setItens(usuario.listaItensDto);
     }
 
     inicializar();

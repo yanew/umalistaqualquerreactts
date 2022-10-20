@@ -20,6 +20,7 @@ export function Login() {
     }
     
     const logar = async () =>{
+        alert('yane');
        await conferirUsuario();
     }
 
