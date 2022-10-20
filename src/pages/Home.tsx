@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import { Item } from '../components/Item';
 import '../styles/home.css';
 import logout from '../images/logout.png';
-import {Item} from '../interfaces/Item';
+import {IItem} from '../interfaces/IItem';
 
 export function Home() {
   
   const[conteudoItem, setConteudoItem] = useState<string>("");
-  const[itens, setItens]= useState<Item[]>([]);
-  const[idItem, setIdItem] = useState(null);
+  const[itens, setItens]= useState<IItem[]>([]);
+  const[idItem, setIdItem] = useState<string>("");
   const[adicionar, setAdicionar] = useState<boolean>(true);
-  const[idUsuario, setIdUsuario] = useState(null);
+  const[idUsuario, setIdUsuario] = useState<string>("");
 
   const atualizarUsuario = async () =>{
 
@@ -34,7 +34,7 @@ export function Home() {
 
   }
 
-  const selecionarItem = async (it)=>{
+  const selecionarItem = async (it:IItem)=>{
 
     const uri = 'http://localhost:8080/usuario/'+ sessionStorage.idUsu;   
     const res = await fetch(uri);
@@ -103,8 +103,8 @@ export function Home() {
           }
 
         <div id="cartaoItem" className="cartaoItem">
-          {itens!=null && itens.map((item)=>(
-            <Item key= {item.id} id = {item.id} conteudo= {item.conteudo} selecionarItem={(it) => selecionarItem(it)}/>
+          {itens!=undefined && itens.map((item)=>(
+            <Item key= {item.id} id = {item.id} conteudo= {item.conteudo} selecionaItem={(item) => selecionarItem(item)}/>
           ))
           }
         </div>

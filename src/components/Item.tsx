@@ -2,10 +2,10 @@ import edit from '../images/edit.png';
 import lixeira from '../images/lixeira.png';
 
 import '../styles/item.css';
-import {Item} from '../interfaces/Item';
+import {IItem} from '../interfaces/IItem';
 
 
-export function Item(item:Item) {
+export function Item(item:IItem) {
 
     const deleteItem = async () => {
         await fetch('http://localhost:8080/item/' + item.id,{
@@ -19,7 +19,7 @@ export function Item(item:Item) {
                 <span >{item.conteudo}</span>
             </div>
             <div className="painelBotoes">
-                <a className="link" onClick={() => item.selecionarItem(item)}>
+                <a className="link" onClick={() => item.selecionaItem(item)}>
                     <img src={edit} width="20" height="20"/>
                 </a>
                 <a className="link" onClick={deleteItem}>
