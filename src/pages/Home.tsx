@@ -10,6 +10,7 @@ export function Home() {
   const[conteudoItem, setConteudoItem] = useState<string>("");
   const[itens, setItens]= useState<IItem[]>([]);
   const[idItem, setIdItem] = useState<string>("");
+  const[start, setStart] = useState<boolean>(true);
   const[adicionar, setAdicionar] = useState<boolean>(true);
   const[idUsuario, setIdUsuario] = useState<string>("");
 
@@ -62,6 +63,7 @@ export function Home() {
 }
 
   useEffect(() => {
+    setTimeout(() => {
     const inicializar = async ()=>{
       if(sessionStorage.idUsu!=undefined){
         const uri = 'http://localhost:8080/usuario/'+ sessionStorage.idUsu;   
@@ -69,14 +71,17 @@ export function Home() {
         const usuario = await res.json();
     
         setItens(usuario.listaItensDto);
-        //console.log(usuario);
       }else{
-        console.log(sessionStorage.idUsu);
+        console.log('idUsu undefined ', sessionStorage.idUsu);
       }
     }
 
-    inicializar();
-  }, [itens]);
+    if(start){
+      inicializar();
+      setStart(false);
+    }
+    
+  },500)}, [itens, start]);
 
   return (
     <div id='container' className="container">
