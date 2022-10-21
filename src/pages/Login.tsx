@@ -12,15 +12,15 @@ export function Login() {
     const conferirUsuario = async () => {
         const res = await fetch(uri+contLogin+"/"+contSenha);
         const usuario = await res.json();
-        guardarIdUsuarioSessionStorage(usuario.id);
+        guardarInfoUsuarioSessionStorage(usuario.id, usuario.nome);
     }
     
-    const guardarIdUsuarioSessionStorage = (idUsuario: string) => {
+    const guardarInfoUsuarioSessionStorage = (idUsuario: string, nomeUsuario: string) => {
         sessionStorage.idUsu = idUsuario;
+        sessionStorage.nomeUsu = nomeUsuario;
     }
     
     const logar = async () =>{
-        alert('yane');
        await conferirUsuario();
     }
 

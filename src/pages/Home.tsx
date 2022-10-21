@@ -21,9 +21,8 @@ export function Home() {
 
     const novoItem = {conteudo: conteudoItem}
     const listaAtualizada = {listaItensDto:[...usuario.listaItensDto, novoItem]}
-
     const usuarioTemp = {...usuario, ...listaAtualizada}
-    console.log(usuarioTemp);
+    
     await fetch(uri,{
         method: 'PUT',
         body: JSON.stringify(usuarioTemp),
@@ -64,12 +63,16 @@ export function Home() {
 
   useEffect(() => {
     const inicializar = async ()=>{
-
-      const uri = 'http://localhost:8080/usuario/'+ sessionStorage.idUsu;   
-      const res = await fetch(uri);
-      const usuario = await res.json();
-  
-      setItens(usuario.listaItensDto);
+      if(sessionStorage.idUsu!=undefined){
+        const uri = 'http://localhost:8080/usuario/'+ sessionStorage.idUsu;   
+        const res = await fetch(uri);
+        const usuario = await res.json();
+    
+        setItens(usuario.listaItensDto);
+        //console.log(usuario);
+      }else{
+        console.log(sessionStorage.idUsu);
+      }
     }
 
     inicializar();
@@ -78,7 +81,7 @@ export function Home() {
   return (
     <div id='container' className="container">
        <header>
-          <h1>Uma lista qualquer</h1>
+          <h1>Olá, {sessionStorage.nomeUsu}</h1>
           <Link to="/">
             <img src={logout} width="20" height="20" alt='Sair'/>
           </Link>
